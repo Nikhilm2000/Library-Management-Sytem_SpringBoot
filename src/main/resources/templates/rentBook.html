@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Add Book</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body style="background: linear-gradient(90deg,#085078,#85D8CE)">
+	<div th:insert="fragments/header :: header"></div>
+	<div class="container my-5">
+		<h3>Add Book</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-10">
+					<form action="#" th:action="@{/rentbook}" th:object="${student}" method="post">
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="bookname" class="col-form-label">Book</label>
+								<select th:field="*{books}" class="form-control">
+									<option th:each="category: ${books}" th:value="${book.id}"
+										th:text="${book.name}"></option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>
