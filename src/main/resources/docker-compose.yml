@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  docker-mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=lib
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3307:3306
+
+  app:
+    image: app
+    ports:
+       - 8080:8081
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/lib?autoReconnect=true&useSSL=false
+    depends_on:
+       - docker-mysql

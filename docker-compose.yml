@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: lib
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+  app:
+    build: .
+    image: app
+    restart: on-failure
+    ports:
+       - 8080:8081
+    environment: 
+      spring.datasource.url: jdbc:mysql://mysqldb:3306/lib
+      spring.datasource.username: root
+      spring.datasource.password: root
+      spring.datasource.platform: mysql
+      MYSQL_DATABASE: lib
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    links:
+      - mysqldb
+    depends_on:
+      - mysqldb
+    
+  

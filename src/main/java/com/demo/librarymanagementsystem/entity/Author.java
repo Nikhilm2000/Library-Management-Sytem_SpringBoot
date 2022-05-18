@@ -76,10 +76,7 @@ public class Author {
 		this.books = books;
 	}
 
-	public Author() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 
 }

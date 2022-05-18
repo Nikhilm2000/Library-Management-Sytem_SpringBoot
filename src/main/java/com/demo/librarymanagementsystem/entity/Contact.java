@@ -1,6 +1,7 @@
 package com.demo.librarymanagementsystem.entity;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class Contact {
     private Long phone;
 	@Column
 	private Long pub_id;
+	
 	public Contact(Long id, String email, Long phone, Long pub_id) {
 		super();
 		Id = id;
